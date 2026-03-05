@@ -1,0 +1,16 @@
+numpy
+pandas
+pillow
+fastapi
+uvicorn
+python-multipart
+torch
+transformers
+requests
+scipy
+motor
+passlib[bcrypt]
+python-jose[cryptography]
+email-validator
+python-dotenv
+gunicorn

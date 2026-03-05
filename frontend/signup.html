@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Kaira AI - Register</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#39FF14",
+                        "primary-dark": "#2ECC12",
+                        "background": "#050805",
+                        "surface": "#0F160F",
+                        "glass": "rgba(255, 255, 255, 0.03)",
+                        "glass-border": "rgba(255, 255, 255, 0.1)",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.75rem",
+                        "lg": "1.25rem",
+                        "xl": "2rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer base {
+            body {
+                @apply bg-background text-slate-100;
+            }
+        }
+        .glass-card {
+            @apply bg-glass backdrop-blur-xl border border-glass-border;
+        }
+        .neon-glow {
+            text-shadow: 0 0 15px rgba(57, 255, 20, 0.4);
+        }
+        .input-focus {
+            @apply transition-all duration-300 focus:ring-1 focus:ring-primary/50 focus:border-primary/50 outline-none;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .loader {
+            width: 20px;
+            height: 20px;
+            border: 2px solid rgba(0, 0, 0, 0.1);
+            border-radius: 50%;
+            border-top-color: #000;
+            animation: spin 1s ease-in-out infinite;
+            display: none;
+            margin-left: 10px;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
+    <style>
+        body {
+            min-height: max(884px, 100dvh);
+            display: flex;
+            flex-direction: column;
+        }
+    </style>
+</head>
+
+<body class="font-display antialiased">
+    <div class="h-12 w-full"></div>
+    <main class="flex-1 px-8 pb-12 flex flex-col items-center">
+        <div class="w-full max-w-md">
+            <div class="mb-10 pt-4 text-center">
+                <div class="flex items-center justify-center gap-2 mb-8">
+                    <span class="material-symbols-outlined text-primary text-3xl font-bold">orbit</span>
+                    <span class="font-extrabold text-2xl tracking-tight">Kaira<span
+                            class="text-primary">AI</span></span>
+                </div>
+                <h1 class="text-3xl font-extrabold tracking-tight mb-2">Create Account</h1>
+                <p class="text-slate-400 text-sm">Join the global network of citizen scientists.</p>
+            </div>
+
+            <form id="signupForm" class="space-y-5">
+                <!-- Name -->
+                <div class="space-y-2">
+                    <label class="text-xs font-bold uppercase tracking-widest text-slate-500 ml-1">Full Name</label>
+                    <div class="relative">
+                        <span
+                            class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-500">person</span>
+                        <input id="name"
+                            class="w-full h-14 bg-surface glass-card border-none rounded-2xl pl-12 pr-4 text-white placeholder:text-slate-600 input-focus"
+                            placeholder="John Doe" type="text" required />
+                    </div>
+                </div>
+
+                <!-- Email -->
+                <div class="space-y-2">
+                    <label class="text-xs font-bold uppercase tracking-widest text-slate-500 ml-1">Email Address</label>
+                    <div class="relative">
+                        <span
+                            class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-500">mail</span>
+                        <input id="email"
+                            class="w-full h-14 bg-surface glass-card border-none rounded-2xl pl-12 pr-4 text-white placeholder:text-slate-600 input-focus"
+                            placeholder="name@example.com" type="email" required />
+                    </div>
+                </div>
+
+                <!-- Password -->
+                <div class="space-y-2">
+                    <label class="text-xs font-bold uppercase tracking-widest text-slate-500 ml-1">Password</label>
+                    <div class="relative">
+                        <span
+                            class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-500">lock</span>
+                        <input id="password"
+                            class="w-full h-14 bg-surface glass-card border-none rounded-2xl pl-12 pr-12 text-white placeholder:text-slate-600 input-focus"
+                            placeholder="••••••••" type="password" required />
+                        <button type="button"
+                            class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-slate-500 text-xl hover:text-primary transition-colors">visibility</button>
+                    </div>
+                </div>
+
+                <!-- Confirm Password -->
+                <div class="space-y-2">
+                    <label class="text-xs font-bold uppercase tracking-widest text-slate-500 ml-1">Confirm
+                        Password</label>
+                    <div class="relative">
+                        <span
+                            class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-500">lock_reset</span>
+                        <input id="confirmPassword"
+                            class="w-full h-14 bg-surface glass-card border-none rounded-2xl pl-12 pr-4 text-white placeholder:text-slate-600 input-focus"
+                            placeholder="••••••••" type="password" required />
+                    </div>
+                </div>
+
+                <!-- Profile Image (Optional) -->
+                <div class="space-y-2">
+                    <label class="text-xs font-bold uppercase tracking-widest text-slate-500 ml-1">Profile Photo
+                        (Optional)</label>
+                    <div class="relative">
+                        <span
+                            class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-500">image</span>
+                        <input id="profileImage"
+                            class="w-full h-14 bg-surface glass-card border-none rounded-2xl pl-12 pr-4 text-slate-400 file:mr-4 file:py-1 file:px-3 file:rounded-full file:border-0 file:text-xs file:font-bold file:bg-primary/10 file:text-primary hover:file:bg-primary/20 cursor-pointer pt-3"
+                            type="file" accept="image/*" />
+                    </div>
+                </div>
+
+                <!-- Terms -->
+                <div class="flex items-start gap-3 pt-2">
+                    <div
+                        class="mt-1 h-5 w-5 rounded border border-primary/30 bg-surface flex items-center justify-center">
+                        <span class="material-symbols-outlined text-primary text-sm font-bold">check</span>
+                    </div>
+                    <p class="text-[11px] text-slate-500 leading-normal">
+                        I agree to the <span class="text-primary hover:underline cursor-pointer">Terms of Service</span>
+                        and <span class="text-primary hover:underline cursor-pointer">Privacy Policy</span>.
+                    </p>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="mt-10 space-y-6">
+                    <button id="signupBtn" type="submit"
+                        class="w-full h-15 py-4 bg-primary hover:bg-primary-dark text-black font-extrabold text-lg rounded-2xl shadow-[0_0_25px_rgba(57,255,20,0.3)] transition-all active:scale-[0.98] flex items-center justify-center">
+                        Create Account <div class="loader" id="signupLoader"></div>
+                    </button>
+
+                    <div class="flex items-center gap-4 py-2">
+                        <div class="h-px flex-1 bg-white/5"></div>
+                        <span class="text-[10px] uppercase tracking-widest text-slate-600 font-bold">Or Register
+                            with</span>
+                        <div class="h-px flex-1 bg-white/5"></div>
+                    </div>
+
+                    <!-- Social (Placeholder) -->
+                    <div class="grid grid-cols-2 gap-4">
+                        <button type="button"
+                            class="glass-card h-14 rounded-2xl flex items-center justify-center gap-3 active:bg-white/5 transition-colors hover:border-primary/50">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M12.48 10.92v3.28h7.84c-.24 1.84-.909 3.153-1.89 4.144-1.21 1.21-3.11 2.524-6.95 2.524-6.21 0-11.08-5.023-11.08-11.234S5.27 1.624 11.48 1.624c3.153 0 5.483 1.246 7.189 2.844l2.316-2.316C18.84 0.113 15.65-0.9 11.48-0.9 5.15-0.9 0 4.15 0 10.5s5.15 11.4 11.48 11.4c3.414 0 6.01-1.127 8.12-3.344 2.11-2.11 2.78-5.07 2.78-7.44 0-.61-.06-1.19-.17-1.72h-9.73z">
+                                </path>
+                            </svg>
+                            <span class="text-sm font-bold">Google</span>
+                        </button>
+                        <button type="button"
+                            class="glass-card h-14 rounded-2xl flex items-center justify-center gap-3 active:bg-white/5 transition-colors hover:border-primary/50">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M16.365 1.43c-1.14 1.352-1.93 3.275-1.72 5.148.187.024.37.036.556.036 1.05 0 2.217-.614 3.012-1.587 1.144-1.393 1.85-3.328 1.635-5.027-.18-.012-.36-.018-.54-.018-.94 0-2.13.626-2.943 1.448zm3.03 5.473c-.93 0-2.327.653-3.15 1.15-.824.498-1.57.51-2.454.01-.735-.417-1.79-1.15-2.85-1.15-2.22 0-4.57 1.842-4.57 5.617 0 4.132 2.71 8.818 5.14 8.818.91 0 1.55-.49 2.53-.49s1.58.49 2.57.49c2.25 0 5.04-4.22 5.04-7.25 0-.08 0-.15-.01-.22-1.84-.66-2.86-2.42-2.86-4.25 0-2.01 1.08-3.48 2.78-4.14-.62-1.35-1.99-2.73-4.22-2.73z">
+                                </path>
+                            </svg>
+                            <span class="text-sm font-bold">Apple</span>
+                        </button>
+                    </div>
+
+                    <div class="text-center pt-4">
+                        <p class="text-slate-500 text-sm">
+                            Already have an account?
+                            <a class="text-primary font-bold ml-1 hover:underline" href="login.html">Sign In</a>
+                        </p>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="fixed top-0 right-0 -z-10 w-64 h-64 bg-primary/5 blur-[100px]"></div>
+        <div class="fixed bottom-0 left-0 -z-10 w-96 h-96 bg-primary/5 blur-[120px]"></div>
+    </main>
+    <!-- Footer/Indicator -->
+    <div class="h-8 w-full flex justify-center items-end pb-2">
+        <div class="w-32 h-1 bg-white/20 rounded-full"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Kaira AI - Login</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#39FF14", // Neon Green
+                        "primary-dark": "#2ECC12",
+                        "background": "#050805",
+                        "surface": "#0F160F",
+                        "glass": "rgba(255, 255, 255, 0.03)",
+                        "glass-border": "rgba(255, 255, 255, 0.1)",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.75rem",
+                        "lg": "1.25rem",
+                        "xl": "2rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer base {
+            body {
+                @apply bg-background text-slate-100;
+            }
+        }
+        .glass-card {
+            @apply bg-glass backdrop-blur-xl border border-glass-border;
+        }
+        .neon-glow {
+            text-shadow: 0 0 15px rgba(57, 255, 20, 0.4);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .input-focus-ring {
+            @apply focus:ring-1 focus:ring-primary focus:border-primary outline-none transition-all;
+        }
+        .loader {
+            width: 20px;
+            height: 20px;
+            border: 2px solid rgba(0, 0, 0, 0.1);
+            border-radius: 50%;
+            border-top-color: #000;
+            animation: spin 1s ease-in-out infinite;
+            display: none;
+            margin-left: 10px;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
+    <style>
+        body {
+            min-height: 100dvh;
+            display: flex;
+            flex-direction: column;
+        }
+    </style>
+</head>
+
+<body class="font-display antialiased">
+    <div class="fixed inset-0 overflow-hidden pointer-events-none -z-10">
+        <div class="absolute top-[-10%] right-[-10%] w-[80%] h-[40%] bg-primary/5 blur-[120px] rounded-full"></div>
+        <div class="absolute bottom-[-5%] left-[-5%] w-[60%] h-[30%] bg-primary/10 blur-[100px] rounded-full"></div>
+    </div>
+    <main class="flex-1 flex flex-col px-8 pt-16 pb-8 max-w-md mx-auto w-full">
+        <div class="flex flex-col items-center mb-12">
+            <div
+                class="size-20 bg-primary/10 rounded-3xl flex items-center justify-center mb-4 border border-primary/20">
+                <span class="material-symbols-outlined text-primary text-5xl font-bold">orbit</span>
+            </div>
+            <h1 class="font-extrabold text-3xl tracking-tight">Kaira<span class="text-primary neon-glow">AI</span></h1>
+            <p class="text-slate-500 text-sm mt-2 font-medium">Global Species Ledger</p>
+        </div>
+
+        <form id="loginForm" class="space-y-6">
+            <div class="space-y-4">
+                <div class="space-y-1.5">
+                    <label class="text-xs font-bold uppercase tracking-widest text-slate-400 ml-1">Email Address</label>
+                    <div class="relative">
+                        <span
+                            class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 text-xl">alternate_email</span>
+                        <input id="loginEmail"
+                            class="w-full h-14 bg-surface/50 border border-white/10 rounded-xl pl-12 pr-4 text-white placeholder:text-slate-600 input-focus-ring"
+                            placeholder="name@example.com" type="email" required />
+                    </div>
+                </div>
+                <div class="space-y-1.5">
+                    <div class="flex justify-between items-center ml-1">
+                        <label class="text-xs font-bold uppercase tracking-widest text-slate-400">Password</label>
+                        <button type="button"
+                            class="text-primary text-[11px] font-bold uppercase tracking-wider hover:underline">Forgot
+                            Password?</button>
+                    </div>
+                    <div class="relative">
+                        <span
+                            class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 text-xl">lock</span>
+                        <input id="loginPassword"
+                            class="w-full h-14 bg-surface/50 border border-white/10 rounded-xl pl-12 pr-12 text-white placeholder:text-slate-600 input-focus-ring"
+                            placeholder="••••••••" type="password" required />
+                        <button type="button"
+                            class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-slate-500 hover:text-white transition-colors">visibility</button>
+                    </div>
+                </div>
+            </div>
+
+            <button id="loginBtn" type="submit"
+                class="w-full h-14 bg-primary hover:bg-primary-dark text-black font-extrabold text-lg rounded-xl flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(57,255,20,0.3)] transition-all active:scale-[0.98]">
+                Login to Hub <div class="loader" id="loginLoader"></div>
+                <span class="material-symbols-outlined font-bold" id="loginIcon">arrow_forward</span>
+            </button>
+        </form>
+
+        <div class="mt-12">
+            <div class="relative flex items-center mb-8">
+                <div class="flex-grow border-t border-white/5"></div>
+                <span class="flex-shrink mx-4 text-xs font-bold text-slate-600 uppercase tracking-[0.2em]">Secure
+                    OAuth</span>
+                <div class="flex-grow border-t border-white/5"></div>
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+                <button type="button"
+                    class="h-14 glass-card rounded-xl flex items-center justify-center gap-3 hover:bg-white/5 transition-colors group">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                        <path
+                            d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
+                            fill="#4285F4"></path>
+                        <path
+                            d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
+                            fill="#34A853"></path>
+                        <path
+                            d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"
+                            fill="#FBBC05"></path>
+                        <path
+                            d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 12-4.53z"
+                            fill="#EA4335"></path>
+                    </svg>
+                    <span class="text-sm font-bold">Google</span>
+                </button>
+                <button type="button"
+                    class="h-14 glass-card rounded-xl flex items-center justify-center gap-3 hover:bg-white/5 transition-colors group">
+                    <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+                        <path
+                            d="M17.05 20.28c-.98.95-2.05 1.72-3.23 1.72-1.15 0-1.51-.71-2.91-.71-1.41 0-1.82.7-2.92.71-1.15 0-2.31-.83-3.32-1.79-2.07-1.96-3.66-5.55-3.66-8.91 0-5.41 3.34-8.29 6.49-8.29 1.66 0 2.9.99 3.86.99.94 0 2.45-1.14 4.41-1.14 1.83 0 3.31.81 4.2 2.13-3.52 1.7-2.96 6.64.44 8.01-.84 2.14-1.94 4.21-3.4 5.29zM12.01 4.31c.04-2.42 2.01-4.31 4.36-4.31.14 2.76-2.14 4.75-4.36 4.31z">
+                        </path>
+                    </svg>
+                    <span class="text-sm font-bold">Apple</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="mt-auto pt-8 flex flex-col items-center">
+            <p class="text-slate-500 text-sm">
+                Don't have an account?
+                <a class="text-primary font-bold ml-1 hover:underline" href="signup.html">Request Access</a>
+            </p>
+            <div class="mt-8 flex gap-4">
+                <span class="size-1.5 rounded-full bg-primary/20"></span>
+                <span class="size-1.5 rounded-full bg-primary/20"></span>
+                <span class="size-1.5 rounded-full bg-primary"></span>
+            </div>
+        </div>
+    </main>
+    <footer class="p-6 text-center border-t border-white/5">
+        <p class="text-[10px] text-slate-600 font-medium tracking-widest uppercase">
+            Encrypted Session • Node 042-Beta
+        </p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+
+</html>

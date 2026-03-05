@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Kaira AI - Modernized Biodiversity</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#39FF14", // Neon Green
+                        "primary-dark": "#2ECC12",
+                        "background": "#050805",
+                        "surface": "#0F160F",
+                        "glass": "rgba(255, 255, 255, 0.03)",
+                        "glass-border": "rgba(255, 255, 255, 0.1)",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.75rem",
+                        "lg": "1.25rem",
+                        "xl": "2rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer base {
+            body {
+                @apply bg-background text-slate-100;
+            }
+        }
+        .glass-card {
+            @apply bg-glass backdrop-blur-xl border border-glass-border;
+        }
+        .neon-glow {
+            text-shadow: 0 0 15px rgba(57, 255, 20, 0.4);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .float-animation {
+            animation: float 6s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+    </style>
+    <style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+
+<body class="font-display antialiased min-h-screen">
+    <nav class="sticky top-0 z-50 bg-background/80 backdrop-blur-xl border-b border-white/5">
+        <div class="px-6 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-primary text-3xl font-bold">orbit</span>
+                <span class="font-extrabold text-xl tracking-tight">Kaira<span class="text-primary">AI</span></span>
+            </div>
+            <!-- Functional Navigation -->
+            <div class="flex items-center gap-6">
+                <a href="index.html"
+                    class="hidden md:block font-bold text-sm text-slate-300 hover:text-primary transition-colors">Tool</a>
+
+                <!-- Auth Links -->
+                <div id="authLinks" class="flex items-center gap-6">
+                    <a href="login.html"
+                        class="hidden md:block font-bold text-sm text-slate-300 hover:text-primary transition-colors">Login</a>
+                    <a href="signup.html"
+                        class="px-5 py-2 glass-card rounded-full text-sm font-bold text-primary border border-primary/20 hover:bg-primary/10 transition-colors">
+                        Sign Up
+                    </a>
+                </div>
+
+                <!-- User Profile (Hidden by default) -->
+                <div id="userProfile" class="hidden flex items-center gap-4">
+                    <span id="userName" class="text-white font-bold text-sm"></span>
+                    <img id="userAvatar" src="" alt="Profile"
+                        class="w-10 h-10 rounded-full border border-primary/50 object-cover">
+                    <button id="logoutBtn"
+                        class="text-xs text-slate-400 hover:text-white transition-colors">Logout</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="relative pt-10 pb-20 px-6 overflow-hidden">
+        <div class="absolute top-0 right-0 -z-10 w-64 h-64 bg-primary/10 blur-[100px]"></div>
+        <div class="absolute bottom-0 left-0 -z-10 w-96 h-96 bg-primary/5 blur-[120px]"></div>
+        <div class="flex flex-col gap-12 lg:flex-row lg:items-center lg:justify-between lg:max-w-6xl lg:mx-auto">
+            <div class="space-y-6 lg:max-w-xl">
+                <div
+                    class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-[10px] font-bold uppercase tracking-widest">
+                    <span class="relative flex h-2 w-2">
+                        <span
+                            class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+                    </span>
+                    Next-Gen Species Tracking
+                </div>
+                <h1 class="text-5xl font-extrabold leading-[1.1] tracking-tight">
+                    Analyze the <span class="text-primary neon-glow">Wild</span> in Real-Time
+                </h1>
+                <p class="text-slate-400 text-lg leading-relaxed">
+                    Harness advanced computer vision to identify wildlife and preserve our planet's genetic heritage.
+                </p>
+                <div class="flex flex-col gap-4 sm:flex-row">
+                    <a href="index.html"
+                        class="w-full sm:w-auto px-8 h-14 bg-primary hover:bg-primary-dark text-black font-extrabold text-lg rounded-xl flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(57,255,20,0.3)] transition-all">
+                        Launch Scanner
+                        <span class="material-symbols-outlined font-bold">center_focus_weak</span>
+                    </a>
+                    <a href="#"
+                        class="w-full sm:w-auto px-8 h-14 glass-card text-white font-bold rounded-xl flex items-center justify-center gap-2 hover:bg-white/5 transition-colors">
+                        View Database
+                    </a>
+                </div>
+            </div>
+            <div class="relative mt-8 flex justify-center items-center lg:mt-0">
+                <div class="float-animation relative w-full aspect-square max-w-[320px]">
+                    <div
+                        class="absolute inset-0 border-[1px] border-primary/30 rounded-full animate-[spin_20s_linear_infinite]">
+                    </div>
+                    <div
+                        class="absolute inset-4 border-[1px] border-white/10 rounded-full animate-[spin_15s_linear_infinite_reverse]">
+                    </div>
+                    <div
+                        class="absolute inset-10 rounded-3xl overflow-hidden shadow-2xl border border-white/20 transform rotate-3">
+                        <img alt="Species" class="w-full h-full object-cover grayscale-[30%]"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQlcN5pRJeFdEuzacuiEDyG7W2ACVHfDjt2nXnqJXibnAX6HVKzOQ0fOxGmPR8ScL6w7Ar9Joo31efsJbs9FK5FluvmSqSPBCUY2V0JbUTbHDV7QKIKoqUmmN-zzkpKGJptLE4g48RxFMVhUV8l7HufKpApYdukybC71kcMUckKDu6JO02mOWt4ggZbHd4Vn2ZLzW7-RS-nckrlILOd9my0YYJkx1KM9SBb6GvYc2cfJzht7eQuxoV9pUO4Px7g2IQr8n4-eYLyPKn" />
+                        <div class="absolute inset-0 bg-gradient-to-t from-primary/40 to-transparent"></div>
+                        <div
+                            class="absolute top-0 left-0 w-full h-[2px] bg-primary shadow-[0_0_15px_#39FF14] animate-[bounce_4s_infinite]">
+                        </div>
+                    </div>
+                    <div class="absolute -top-4 -right-4 glass-card px-3 py-2 rounded-lg flex flex-col gap-1">
+                        <span class="text-[10px] text-primary font-bold uppercase">Match Found</span>
+                        <span class="text-xs font-bold">99.8% Accuracy</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="px-6 py-20 bg-surface/50">
+        <div class="mb-12 max-w-6xl mx-auto">
+            <h2 class="text-3xl font-extrabold mb-4">The Process</h2>
+            <div class="w-16 h-1 bg-primary rounded-full"></div>
+        </div>
+        <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-6">
+            <div
+                class="glass-card p-8 rounded-2xl relative overflow-hidden group hover:-translate-y-2 transition-transform duration-300">
+                <div class="absolute top-0 right-0 p-4 opacity-10">
+                    <span class="text-6xl font-black">01</span>
+                </div>
+                <div
+                    class="size-14 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-black transition-colors duration-500">
+                    <span class="material-symbols-outlined text-3xl">add_a_photo</span>
+                </div>
+                <h3 class="text-xl font-bold mb-3">Capture</h3>
+                <p class="text-slate-400 text-sm leading-relaxed">Snap a high-resolution photo of any specimen using our
+                    mobile interface.</p>
+            </div>
+            <div
+                class="glass-card p-8 rounded-2xl relative overflow-hidden group hover:-translate-y-2 transition-transform duration-300">
+                <div class="absolute top-0 right-0 p-4 opacity-10">
+                    <span class="text-6xl font-black">02</span>
+                </div>
+                <div
+                    class="size-14 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-black transition-colors duration-500">
+                    <span class="material-symbols-outlined text-3xl">biotech</span>
+                </div>
+                <h3 class="text-xl font-bold mb-3">Process</h3>
+                <p class="text-slate-400 text-sm leading-relaxed">Our neural engine decomposes features to identify
+                    precise genus markers.</p>
+            </div>
+            <div
+                class="glass-card p-8 rounded-2xl relative overflow-hidden group hover:-translate-y-2 transition-transform duration-300">
+                <div class="absolute top-0 right-0 p-4 opacity-10">
+                    <span class="text-6xl font-black">03</span>
+                </div>
+                <div
+                    class="size-14 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-black transition-colors duration-500">
+                    <span class="material-symbols-outlined text-3xl">insights</span>
+                </div>
+                <h3 class="text-xl font-bold mb-3">Sync</h3>
+                <p class="text-slate-400 text-sm leading-relaxed">Results are instantly logged to the global
+                    biodiversity ledger.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="px-6 py-20 bg-background">
+        <div class="max-w-6xl mx-auto mb-12">
+            <span class="text-primary font-bold text-xs uppercase tracking-widest">Capabilities</span>
+            <h2 class="text-3xl font-extrabold mt-2">Next-Gen Tools</h2>
+        </div>
+        <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-6">
+            <div
+                class="group flex items-center gap-6 p-4 glass-card rounded-2xl border-l-4 border-l-primary/0 hover:border-l-primary transition-all duration-300">
+                <div
+                    class="shrink-0 size-20 flex items-center justify-center bg-white/5 rounded-2xl group-hover:scale-110 transition-transform">
+                    <span class="material-symbols-outlined text-primary text-5xl">bolt</span>
+                </div>
+                <div class="space-y-1">
+                    <h3 class="font-bold text-lg">Instant Sync</h3>
+                    <p class="text-slate-400 text-sm">Real-time processing with low-latency identification.</p>
+                </div>
+            </div>
+            <div
+                class="group flex items-center gap-6 p-4 glass-card rounded-2xl border-l-4 border-l-primary/0 hover:border-l-primary transition-all duration-300">
+                <div
+                    class="shrink-0 size-20 flex items-center justify-center bg-white/5 rounded-2xl group-hover:scale-110 transition-transform">
+                    <span class="material-symbols-outlined text-primary text-5xl">database</span>
+                </div>
+                <div class="space-y-1">
+                    <h3 class="font-bold text-lg">Cloud Ledger</h3>
+                    <p class="text-slate-400 text-sm">Access 500k+ records in a distributed node network.</p>
+                </div>
+            </div>
+            <div
+                class="group flex items-center gap-6 p-4 glass-card rounded-2xl border-l-4 border-l-primary/0 hover:border-l-primary transition-all duration-300">
+                <div
+                    class="shrink-0 size-20 flex items-center justify-center bg-white/5 rounded-2xl group-hover:scale-110 transition-transform">
+                    <span class="material-symbols-outlined text-primary text-5xl">public</span>
+                </div>
+                <div class="space-y-1">
+                    <h3 class="font-bold text-lg">Eco-Network</h3>
+                    <p class="text-slate-400 text-sm">Collaborate with field scientists worldwide instantly.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-surface px-6 py-16 border-t border-white/5">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16">
+                <div>
+                    <div class="flex items-center gap-2 mb-6">
+                        <span class="material-symbols-outlined text-primary text-3xl font-bold">orbit</span>
+                        <span class="font-extrabold text-2xl tracking-tight">Kaira<span
+                                class="text-primary">AI</span></span>
+                    </div>
+                    <p class="text-slate-400 leading-relaxed max-w-xs">
+                        Pioneering the intersection of artificial intelligence and ecological conservation.
+                    </p>
+                </div>
+                <div class="grid grid-cols-2 gap-8">
+                    <div>
+                        <h4 class="font-bold text-xs uppercase tracking-[0.2em] text-primary mb-6">Partners</h4>
+                        <ul class="space-y-4 text-sm">
+                            <li><a class="text-slate-300 hover:text-primary transition-colors"
+                                    href="#">Eco-Consortium</a></li>
+                            <li><a class="text-slate-300 hover:text-primary transition-colors" href="#">Wildlife
+                                    Node</a></li>
+                            <li><a class="text-slate-300 hover:text-primary transition-colors" href="#">Terra
+                                    Foundation</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-xs uppercase tracking-[0.2em] text-primary mb-6">Resources</h4>
+                        <ul class="space-y-4 text-sm">
+                            <li><a class="text-slate-300 hover:text-primary transition-colors" href="#">API Core</a>
+                            </li>
+                            <li><a class="text-slate-300 hover:text-primary transition-colors" href="#">Field Guides</a>
+                            </li>
+                            <li><a class="text-slate-300 hover:text-primary transition-colors" href="#">Reports</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="pt-10 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-6">
+                <div class="flex gap-8">
+                    <span
+                        class="material-symbols-outlined text-slate-500 hover:text-primary cursor-pointer transition-colors">hub</span>
+                    <span
+                        class="material-symbols-outlined text-slate-500 hover:text-primary cursor-pointer transition-colors">terminal</span>
+                    <span
+                        class="material-symbols-outlined text-slate-500 hover:text-primary cursor-pointer transition-colors">rss_feed</span>
+                </div>
+                <p class="text-[10px] text-slate-600 font-medium tracking-widest uppercase">© 2026 Kaira AI • All
+                    Systems Operational</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Chat Widget -->
+    <div id="chatWidget" class="fixed bottom-6 right-6 z-[100] flex flex-col items-end">
+        <!-- Chat Window -->
+        <div id="chatWindow"
+            class="hidden w-80 sm:w-96 h-[500px] glass-card rounded-2xl mb-4 flex flex-col shadow-2xl transition-all duration-300 scale-95 opacity-0 origin-bottom-right">
+            <!-- Chat Header -->
+            <div
+                class="h-16 flex items-center justify-between px-4 border-b border-primary/20 bg-primary/10 rounded-t-2xl">
+                <div class="flex items-center gap-2">
+                    <span class="material-symbols-outlined text-primary">smart_toy</span>
+                    <span class="font-bold text-sm tracking-tight text-white">Kaira Assistant</span>
+                </div>
+                <button id="closeChat" class="text-slate-400 hover:text-white transition-colors">
+                    <span class="material-symbols-outlined text-xl">close</span>
+                </button>
+            </div>
+
+            <!-- Chat Messages -->
+            <div id="chatMessages" class="flex-1 overflow-y-auto p-4 space-y-4 no-scrollbar">
+                <!-- AI Welcome Message -->
+                <div class="flex flex-col gap-1 max-w-[85%]">
+                    <span class="text-[10px] text-primary font-bold uppercase ml-1">Kaira AI</span>
+                    <div
+                        class="bg-primary/10 border border-primary/20 rounded-2xl rounded-tl-none p-3 text-xs text-slate-100 leading-relaxed">
+                        Hello! I'm your Kaira AI Assistant. How can I help you explore biodiversity today?
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chat Input -->
+            <div class="p-4 border-t border-white/5">
+                <form id="chatForm" class="flex items-center gap-2">
+                    <input type="text" id="chatInput" placeholder="Ask about species or habitats..."
+                        class="flex-1 bg-white/5 border border-white/10 rounded-xl px-4 py-2 text-xs focus:outline-none focus:border-primary/50 text-white">
+                    <button type="submit"
+                        class="bg-primary text-black p-2 rounded-xl hover:bg-primary-dark transition-colors">
+                        <span class="material-symbols-outlined font-bold text-xl">send</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Float Button -->
+        <button id="chatToggle"
+            class="size-14 bg-primary rounded-full flex items-center justify-center shadow-[0_0_20px_rgba(57,255,20,0.4)] hover:scale-110 active:scale-95 transition-all group">
+            <span id="chatIconOpen"
+                class="material-symbols-outlined text-black text-3xl font-bold group-hover:rotate-12 transition-transform">chat_bubble</span>
+            <span id="chatIconClose" class="hidden material-symbols-outlined text-black text-3xl font-bold">close</span>
+        </button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
