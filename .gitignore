@@ -16,7 +16,8 @@ Thumbs.db
 .vscode/
 node_modules/
 
-# Machine Learning
-*.h5
+# Files larger than 100MB (GitHub limit)
+biodiversity_model.h5
 *.npy
-*.pkl
+*.h5
+kaira ai/dataset.csv
