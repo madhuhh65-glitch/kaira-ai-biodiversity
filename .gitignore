@@ -15,3 +15,8 @@ Thumbs.db
 # Frontend
 .vscode/
 node_modules/
+
+# Machine Learning
+*.h5
+*.npy
+*.pkl
