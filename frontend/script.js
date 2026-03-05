@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- CONFIGURATION ---
     // Set this to your Render backend URL (e.g., 'https://kaira-backend.onrender.com') when deploying to Vercel.
     // Keep it as an empty string '' for local development.
-    const API_URL = '';
+    const API_URL = 'http://localhost:8001';
 
     // --- CHATBOT LOGIC ---
     const chatToggle = document.getElementById('chatToggle');
